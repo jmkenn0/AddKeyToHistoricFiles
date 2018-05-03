@@ -46,7 +46,8 @@ namespace AddKeyToHistoricFiles
                 streamreaderTXT = new StreamReader(dt[0].ToString());
                     string[] inputstring = streamreaderTXT.ReadLine().Split(delimiter);
                 path = Path.GetFileNameWithoutExtension(dt[0].ToString());
-                inputstring[0] = path + "-" + counter.ToString();
+                //column 0        CC                           identstring                customer number                                 date
+                inputstring[0] = inputstring[9].ToString() + "-" + inputstring[48].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[70].ToString();
            
                 
                 MessageBox.Show(outfile+path);
