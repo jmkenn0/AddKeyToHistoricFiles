@@ -46,9 +46,7 @@ namespace AddKeyToHistoricFiles
                 streamreaderTXT = new StreamReader(dt[0].ToString());
                     string[] inputstring = streamreaderTXT.ReadLine().Split(delimiter);
                 path = Path.GetFileNameWithoutExtension(dt[0].ToString());
-                //column 0        CC                           identstring                customer number                                 date
-                inputstring[0] = inputstring[9].ToString() + "-" + inputstring[48].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[70].ToString();
-           
+                
                 
                 MessageBox.Show(outfile+path);
                 streamWriterTXT = new StreamWriter(outfile + path + ".csv");
@@ -63,8 +61,15 @@ namespace AddKeyToHistoricFiles
                     {
                         s.Replace("\"", "");
                     }
-                    
-                    inputstring[0] = path + "-" + counter.ToString();
+
+                    //cfc73
+                    ///column 0        CC                           identstring                customer number                                 date                             order number
+                    //inputstring[0] = inputstring[9].ToString() + "-" + inputstring[48].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[70].ToString() + "-" + inputstring[51].ToString() + "-" + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString();
+
+                    //cfc71
+                    ///column 0        CC                           identstring                customer number                                 date                             order number      missing                  bill to                            payer                             budget/act
+                    inputstring[0] = inputstring[9].ToString() + "-" + inputstring[48].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[70].ToString() + "-" + inputstring[51].ToString() + "-" + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString();
+
                     streamWriterTXT.WriteLine(String.Join(";", inputstring));
 
                     counter++;
@@ -72,12 +77,42 @@ namespace AddKeyToHistoricFiles
                 }
                 streamWriterTXT.Close();
             }
+
             
 
 
 
 
 
+
+
+        }
+
+        public static string convertDate(string month, string year)
+        {
+            /*if (month.Substring(1, 1) == "0")
+                month = month.Substring(2, 1);
+            else
+                month = month.Substring(1, 2); */
+
+
+
+            return month + "/" + DateTime.DaysInMonth(Convert.ToInt16(year), Convert.ToInt16(month)).ToString() + "/" + year;
+        }
+
+        public static string inverseString(string input)
+        {
+            double i = 0;
+            input = input.Replace("\"", "");
+
+            if (input.Contains("-"))
+            {
+                i = Convert.ToDouble(input.Substring(0, input.Length - 1));
+                return i.ToString();
+            }
+
+            i = Convert.ToDouble(input) * (-1);
+            return i.ToString();
 
         }
 
