@@ -63,28 +63,26 @@ namespace AddKeyToHistoricFiles
                         s.Replace("\"", "");
                     }
 
+                    {
+                        curCM = Convert.ToInt32(inputstring[6].Substring(2, 5));
+
+                        if (prvCM >= curCM)
+                        {
+                            counter++;
+                        }
+                    }
+
                     //cfc73
                     ///column 0        CC                           identstring                customer number                                 date                             order number
                     //inputstring[0] = inputstring[9].ToString() + "-" + inputstring[48].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[70].ToString() + "-" + inputstring[51].ToString() + "-" + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString();
 
                     //cfc71
                     ///column 0        CC                           identstring                customer number                                 date                             order number      missing                  bill to                            payer                             budget/act
-                   // inputstring[0] = inputstring[9].ToString() + "-" + inputstring[44].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[74].ToString() + "-" /*+ inputstring[51].ToString() + "-"*/ + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString();
+                    // inputstring[0] = inputstring[9].ToString() + "-" + inputstring[44].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[74].ToString() + "-" /*+ inputstring[51].ToString() + "-"*/ + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString();
 
                     //cfc72
-
-                    {
-                        curCM = Convert.ToInt32(inputstring[6].Substring(2, 5));
-
-                        if(prvCM>=curCM)
-                        {
-                            counter++;
-                        }
-                    }
-
-
                     ///column 0        CC                           identstring                customer number                                 date                             order number      missing                  bill to                            payer                             budget/act
-                   inputstring[0] = inputstring[9].ToString() + "-" + inputstring[44].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[66].ToString() + "-" /*+ inputstring[51].ToString() + "-"*/ + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString() + "-" + inputstring[47].ToString() + "-" + inputstring[49].ToString() + "-" + inputstring[57].ToString() + "-" + inputstring[51].ToString() + "-" + inputstring[46].ToString() + "-" + inputstring[50].ToString() + "-" + inputstring[56].ToString()+"-"+counter.ToString();
+                    inputstring[0] = inputstring[9].ToString() + "-" + inputstring[44].ToString() + "-" + inputstring[28].Substring(inputstring[28].Length-6, 6) + "-" + inputstring[66].ToString() + "-" /*+ inputstring[51].ToString() + "-"*/ + inputstring[32].Substring(inputstring[32].Length - 6, 6) + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString() + "-" + inputstring[47].ToString() + "-" + inputstring[49].ToString() + "-" + inputstring[57].ToString() + "-" + inputstring[51].ToString() + "-" + inputstring[46].ToString() + "-" + inputstring[50].ToString() + "-" + inputstring[56].Substring(inputstring[56].Length - 6, 6) + "-"+counter.ToString();
 
                     prvCM = curCM;
 
