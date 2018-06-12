@@ -68,7 +68,12 @@ namespace AddKeyToHistoricFiles
 
                     //cfc71
                     ///column 0        CC                           identstring                customer number                                 date                             order number      missing                  bill to                            payer                             budget/act
-                    inputstring[0] = inputstring[9].ToString() + "-" + inputstring[48].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[70].ToString() + "-" + inputstring[51].ToString() + "-" + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString();
+                   // inputstring[0] = inputstring[9].ToString() + "-" + inputstring[44].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[74].ToString() + "-" /*+ inputstring[51].ToString() + "-"*/ + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString();
+
+                    //cfc72
+                    ///column 0        CC                           identstring                customer number                                 date                             order number      missing                  bill to                            payer                             budget/act
+                   inputstring[0] = inputstring[9].ToString() + "-" + inputstring[44].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[66].ToString() + "-" /*+ inputstring[51].ToString() + "-"*/ + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString() + "-" + inputstring[47].ToString() + "-" + inputstring[49].ToString() + "-" + inputstring[57].ToString() + "-" + inputstring[51].ToString() + "-" + inputstring[46].ToString() + "-" + inputstring[50].ToString() + "-" + inputstring[56].ToString();
+
 
                     streamWriterTXT.WriteLine(String.Join(";", inputstring));
 
