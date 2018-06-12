@@ -37,7 +37,8 @@ namespace AddKeyToHistoricFiles
             string path = "";
             string outfile="c:\\output\\";
             StreamWriter streamWriterTXT;
-            
+            int prvCM = 0;
+            int curCM = 0;
 
             
                 foreach (DataRow dt in fileArray.Rows)
@@ -71,13 +72,26 @@ namespace AddKeyToHistoricFiles
                    // inputstring[0] = inputstring[9].ToString() + "-" + inputstring[44].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[74].ToString() + "-" /*+ inputstring[51].ToString() + "-"*/ + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString();
 
                     //cfc72
+
+                    {
+                        curCM = Convert.ToInt32(inputstring[6].Substring(2, 5));
+
+                        if(prvCM>=curCM)
+                        {
+                            counter++;
+                        }
+                    }
+
+
                     ///column 0        CC                           identstring                customer number                                 date                             order number      missing                  bill to                            payer                             budget/act
-                   inputstring[0] = inputstring[9].ToString() + "-" + inputstring[44].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[66].ToString() + "-" /*+ inputstring[51].ToString() + "-"*/ + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString() + "-" + inputstring[47].ToString() + "-" + inputstring[49].ToString() + "-" + inputstring[57].ToString() + "-" + inputstring[51].ToString() + "-" + inputstring[46].ToString() + "-" + inputstring[50].ToString() + "-" + inputstring[56].ToString();
+                   inputstring[0] = inputstring[9].ToString() + "-" + inputstring[44].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[66].ToString() + "-" /*+ inputstring[51].ToString() + "-"*/ + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString() + "-" + inputstring[47].ToString() + "-" + inputstring[49].ToString() + "-" + inputstring[57].ToString() + "-" + inputstring[51].ToString() + "-" + inputstring[46].ToString() + "-" + inputstring[50].ToString() + "-" + inputstring[56].ToString()+"-"+counter.ToString();
+
+                    prvCM = curCM;
 
 
                     streamWriterTXT.WriteLine(String.Join(";", inputstring));
 
-                    counter++;
+                   
 
                 }
                 streamWriterTXT.Close();
