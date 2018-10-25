@@ -35,7 +35,7 @@ namespace AddKeyToHistoricFiles
             StreamReader streamreaderTXT;
             char[] delimiter = new char[] { ',', ';', '\t' };
             string path = "";
-            string outfile="c:\\output\\";
+            string outfile="c:\\output\\key\\";
             StreamWriter streamWriterTXT;
             int prvCM = 0;
             int curCM = 0;
@@ -49,7 +49,7 @@ namespace AddKeyToHistoricFiles
                 path = Path.GetFileNameWithoutExtension(dt[0].ToString());
                 
                 
-                MessageBox.Show(outfile+path);
+               
                 streamWriterTXT = new StreamWriter(outfile + path + ".csv");
                 //streamWriterTXT.WriteLine(String.Join(";", inputstring));
                 //streamWriterTXT.WriteLine("here");
@@ -78,11 +78,11 @@ namespace AddKeyToHistoricFiles
 
                     //cfc71
                     ///column 0        CC                           identstring                customer number                                 date                             order number      missing                  bill to                            payer                             budget/act
-                    // inputstring[0] = inputstring[9].ToString() + "-" + inputstring[44].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[74].ToString() + "-" /*+ inputstring[51].ToString() + "-"*/ + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString();
+                     inputstring[0] = inputstring[9].ToString() + "-" + inputstring[44].ToString() + "-" + inputstring[28].ToString() + "-" + inputstring[74].ToString() + "-" /*+ inputstring[51].ToString() + "-"*/ + inputstring[32].ToString() + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString() + "-" + inputstring[13].ToString() + "-" + inputstring[11].ToString();
 
                     //cfc72
-                    ///column 0        CC                           identstring                customer number                                 date                             order number      missing                  bill to                            payer                             budget/act
-                    inputstring[0] = inputstring[9].ToString() + "-" + inputstring[44].ToString() + "-" + inputstring[28].Substring(inputstring[28].Length-6, 6) + "-" + inputstring[66].ToString() + "-" /*+ inputstring[51].ToString() + "-"*/ + inputstring[32].Substring(inputstring[32].Length - 6, 6) + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString() + "-" + inputstring[47].ToString() + "-" + inputstring[49].ToString() + "-" + inputstring[57].ToString() + "-" + inputstring[51].ToString() + "-" + inputstring[46].ToString() + "-" + inputstring[50].ToString() + "-" + inputstring[56].Substring(inputstring[56].Length - 6, 6) + "-"+counter.ToString();
+                    ///column 0        CC   1                        identstring2                     customer number  3                                                date      4                       order number      missing                  bill to  5                                                   payer6                             budget/act7                           8                                   9                               10
+                   //inputstring[0] = inputstring[9].ToString() + "-" + inputstring[44].ToString() + "-" + inputstring[28].Substring(inputstring[28].Length-6, 6) + "-" + inputstring[66].ToString() + "-" /*+ inputstring[51].ToString() + "-"*/ + inputstring[32].Substring(inputstring[32].Length - 6, 6) + "-" + inputstring[34].ToString() + "-" + inputstring[3].ToString() + "-" + inputstring[47].ToString() + "-" + inputstring[49].ToString() + "-" /*+ inputstring[57].ToString() + "-"*/ + inputstring[51].ToString() + "-" + inputstring[46].ToString() + "-" + inputstring[50].ToString() + "-" + inputstring[56].Substring(inputstring[56].Length - 6, 6) + "-"+counter.ToString();
 
                     prvCM = curCM;
 
@@ -93,6 +93,7 @@ namespace AddKeyToHistoricFiles
 
                 }
                 streamWriterTXT.Close();
+                MessageBox.Show(outfile + path);
             }
 
             
